@@ -100,15 +100,6 @@ a{
 
 /*File specific*/
 
-.lootpic{
-	float: left;
-	clear: left;
-	width: 18px;
-	height: 0px;
-	border: 0px solid black;
-	padding: 0;
-}
-
 .look{
 	float: left;
 	border: 0px solid black;
@@ -121,30 +112,7 @@ a{
 	background-color: #d8d8d8;
 }
 
-
-
-
 ::selection{
-	
-	
 	background-color: transparent;
 }
-.changelogtitle{
-	margin: auto;
-	margin-top: 10px;
-	text-decoration: bold;
-	padding: 20px;
-	font-size: 13pt;
-	
-
-}
-
-.changelogdesc{
-	margin: auto;
-	font-size: 12pt;
-	
-	
-
-}
-
 
