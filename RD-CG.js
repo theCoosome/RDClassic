@@ -4,6 +4,12 @@ http://steampoweredairship.com/unexpected-error/rd/
 https://drive.google.com/open?id=1HYPd5PBuNX24mbP4z_BhIiDxqP5lRM1dOc4g5BSVc8I
 https://drive.google.com/open?id=1S_5sqfRwNeyYip_296_XltTGRayP3fW6amOfEyVC5hM
 ___CHANGELOG___
+--2.0-the Classic update--
+    -Removed some things
+    +added some rooms
+    *streamlined code
+    *fixed some bugs
+
 --1.3-fattening update--
     +does not actually fatten you
     +added agility canceling
@@ -33,8 +39,6 @@ ___CHANGELOG___
     + minions now obtainable
     + added potato and otatop
     + added rooms 29 - 30
-    
-
 
 --0.1.9+1--the Beefy update--
     -didn't add beef
@@ -66,8 +70,6 @@ ___CHANGELOG___
         -the thing with the minion healing?
     +minions
 
-
-
 --0.1.7--
     -Separated fighting aspects (attacking, healing) in preparation for Companions
     -Standardised all fighting classes to the following attribute names: (name hp maxhp atk def ddev agil sane)
@@ -96,7 +98,6 @@ ___CHANGELOG___
         *hat and boots
         *broken seashell
         
-
 -another colton update-2.0-sanity update--
 +added limbo
 +fixed some spelling probably
@@ -126,27 +127,19 @@ Bug- dying in room after boss causes fighting dead boss, get loot again
 --------0.1.1---
     - Fixed item damage not being added to base stats
     
-
 --------0.1.0--- 
     - Fixed grammar problems with new rooms
     - Fixed enemies not spawning
     - Added changelog
-
-
 */
 //creates random number between 1 and num.
 function rand(num){
     return (Math.ceil(Math.random() * num));
 }
 
-
 var score = 0;
-var health = "about a hundred";
-var damage = "dunno, 15?";
-var defence = "How am I supposed to know?";
 var sanity = "Quite sane. But that's what they all say.";
 var bossesbeat = 0;
-var runnum = 1;
 function player(){
     this.name = "player";
     this.hp = 100;
@@ -345,15 +338,14 @@ var ashjar = new item(1, 10, -2, -3, 5, "Jar of Ash", "ashjar", "A small jar of 
 var tornclaw = new item(8, 4, 7, -12, 5, "Torn Claw", "tornclaw", "A claw that must have been brutaly ripped off the creature while it was still alive. ");
 var antmound = new item(5,3, -2, -4, 6, "Ant Mound", "antmound", "It's strangely slush like.");
 var planck = new item(0, 2, 11, 2, 5, "Plan ck", "planck", "like plan c, but more, and smaller. Like 1.616199x10<sup>-35</sup> meters small.");
+
 //lvl 3 items ----
 var ichor = new item(7, 7, -4, -8, 5, "Ichor", "ichor", "Blood of the gods. How did you even get this?");
 var err = new item(0, 0, 0, 0, 4, "Error", "err", "It was quite unexpected.");
 var bloodpill= new item(7,5,4,-5,8,"Blood Pill","bloodpill","A small capsule that contains a small amount of blood. Using it has strange effects on the environment. Blood is everywhere.");
 var darkcrystal = new item(13, 2, -2, -13, 4, "Darkened Crystal", "darkcrystal", "Contained in a forcefield, this crystal fires lasers at anything nearby.");
-//lvl 4+ items ----
 
-
-
+//boss items ----
 var lapis = new item(1000, 1000, 1000, 0, 1000, "coo33's Lapis", "lapis", "The Jem of the Gods.\n\nOr at least the god of 7.");
 var hatandboots = new item(5, 50, 8, 0, 10, "Hat and Boots", "hatandboots", "Can't Bump your head anymore, and probably won't stub your toes.");
 var zaroltrophy = new item(0, 0, 0, 20, 50, "Zarol Trophy", "zaroltrophy", "Thinking back, Seriously.\nHow the hell did you do that?");
@@ -373,8 +365,6 @@ var card = new item(2, 25, 25, 0, 20, "00000111", "card", "");
 var device = new item(40, 0, 6, 0, 20, "Electrical device", "device", "You have no idea how it works, but it looks far beyond any tech you have seen.");
 var trueinsanity = new item(35, -3, -10, -3, 5, "True Insanity", "trueinsanity", "You feel at peace. You have achived true insanity.");
 var truesanity = new item(15, 15, 30, 7, 5, "True Sanity", "truesanity", "You feel at peace. You have achieved true sanity.");
-
-
 
 var bossitems = [truesanity,trueinsanity,heroshield, herosword, fishingrod, pencil, spoon, alphaxe, sivgoggles, shurikenbag, jimsword, jimarmor, inactivecube, card, device, lapis, hatandboots];
 var allitems = [lapis, trueinsanity, truesanity, inactivecube, spoon, shurikenbag, hatandboots, device, card, jimsword, jimarmor, alphaxe, sivgoggles, pencil, fishingrod, heroshield, herosword, onepin, woodstick, acorncap, boardgame, brokenglasses, bobbypin, crowbar, recording, crate, fakesword, hoodie, journal, keyboard, lamp, nerfgun, organs, reflectivevest, sharktooth, steeltoedboots, styrofoamchestplate, wandofwater, wings, circularsaw, redbook, brokenseashell, redball, rotflesh, no_thing, sissors ,bloodpill, fakebeard, planc, ashjar, lifethread, septagram, shinedisk, tornclaw, bikeweel, heavenchip, catears, antmound, err, ichor, darkcrystal, potato, otatop, squiglasses, map, buttton, cable, croptop];
@@ -413,18 +403,17 @@ function Boss(hp, atk, de, name, divname, maxhp, ddev, agil, heal, sane, loot, l
 
 function buildZarol(){
     var zarol = new Boss(500 + score, 25, 18+(runs*5), "Zarol", "zarol", 10000 + score * 2, 100, [1,15], [70,69,1000+score], -10, zaroltrophy, zaroltrophy, 50, "You stand in the final room, reveling in your victory.  From just over your left shoulder, you hear heavy breathing.", "Your head slowly swivels, back poker straight, to look into three wide red eyes.",["Everything you can see is unrecognizable, even the boss that has now dispersed to the point of surrounding you.","It is infuriated by your damage, darkness billowing from its wounds, disintegrating all it touches.","You seem to have gotten its attention, but it's cold glare assures you this is not a good.","It seems almost to be ignoring you, focusing solely on destruction.", "You feel an aura of confidence, coming from it as it methodically destroys all that surrounds it.", "You feel a burst of energy from it, enveloping you with searing pain."], bossroom, 150);
-    return zarol
+    return zarol;
 }
-zarol = buildZarol()
+zarol = buildZarol();
 var adventurer = new Boss(190, 20, 0, "Adventurer", "adventurer", 190, 5, [5,100], [100,50,30], -7, herosword, heroshield, 10, "You hear the footsteps of someone else.", "It is an Adventurer, \nReadying his stance for Battle!", ["He seems oddly unaware of the massive amounts of damage you have dealt him.\nMuch like you are.", "", "", "", "He seems more confident of himself,\nmore sure of his strides.",""],bossroom,100);
 var coosome = new Boss(125, 10, 10, "coo33", "coosome", 177, 75, [19, 64], [64,64-13,10], -2, fishingrod, pencil, 15, "You hear something behind you.", "\'Here,\n Fishy..\n  Fishy...\'", ["It's bloodied eyes dart across you, searching for ways to finish you off quickly.", "It looks angry, but seems to have survived worse.", "It is smiling, although panting. It seems as though it's malnourishedness is taking effect.", "He seems unfazed,\na low growl and a chuckle murmured from within.","It takes a deep breath, the type one might take after a good nights sleep.","It seems to be toying with you, darting through the room."],roomBoss2,68);
-var jimgrind = new Boss(200, 35, 35, "Jim Grind", "jimgrind", 200, 2, [1, 44], [12, 11, 12], -2, jimsword, jimarmor, 25, "Someone is in the room with you. You turn just fast enough to see him. He knows he has been spotted.", "A stern look on his face; A deadly look in his eyes.", ["", "You can see small gaps in his defence now, chinks in his armor.", "His breathing is heavy, and his swings are slower, yet just as powerful.", "He stands with a confident air about him, holding his sword firmly.", "His armor is beginning to glow, even the largest chinks in his armor closing as the armor reshapes into its original form.", "He seems unaware of your blows, simply tanking all damage you may deal to him."],roomBoss4, 260);
-var strangecube = new Boss(250, 1, -5,"Strange Cube", "", 350, 2, [10,100], [100,99,75], -3, inactivecube, device, 30,"A strange cube is sitting on the ground in front or you.","Sudden arcs of electricity jump across its surface as it rises into the air.", ["Although grounded, it still musters up powerful shocks upon you.", "It appears to have physical damage, and is barely able to keep itself aloft.", "It is wavering now, seeming to have less energy within it, focusing on attacks.", "It floats evenly in front of you, electricity visibly through internal circuits.", "electricity is visible streaking across its surface, arcing to nearby surfaces.", "It's magnetic fields are powerful, you can feel them pulling on your magnetic accessories."],bossroom,75)
-var alpha = new Boss(350, 34, 0, "Alpha", "alpha", 500, 6, [2,3], [5,4,10], -3, alphaxe, sivgoggles, 20, "You hear sudden quick footsteps from behind you.", "you turn to see someone dashing at you, Swinging a large axe!", ["", "", "", "", "", ""],roomBoss3, 120);
-
-var epicalpha = new Boss(450, 50, 10, "Alpha 949", "alpha", 450, 12, [5, 6], [10, 8, 20], -6, sivgoggles, shurikenbag, -100, "You find yourself in a familiar looking room. Looking around, you realize you have some unfinished business. You hear sudden quick footsteps from behind you.", "you turn to see a familiar figure dashing towards you, Swinging a large axe!", ["", "", "", "", "", ""], roomBoss3, 90);
-var epicjim = new Boss(320, 45, 150, "Jim Grind", "jimgrind", 360, 2, [0, 1], [8, 7, 35], -2, jimarmor, hatandboots, -100, "You find yourself in a familiar looking room. Looking around, you realize you have some unfinished business. Someone is in the room with you. You turn to face him. You both know who won last time. ", "A stern look on his face; A deadly look in his eyes.", ["", "You can see small gaps in his defence now, chinks in his armor.", "His breathing is heavy, and his swings are slower, yet just as powerful.", "He stands with a confident air about him, holding his sword firmly.", "His armor is beginning to glow, even the largest chinks in his armor closing as the armor reshapes into its original form.", "He seems unaware of your blows, simply tanking all damage you may deal to him."], roomBoss4, 190);
 var epiccoo = new Boss(300, 20, 10, "coo33", "coosome", 400, 150, [19, 64], [64,64-13,20], -4, pencil, spoon, -100, "You find yourself in a familiar looking room. Looking around, you realize you have some unfinished business. You hear a familiar chilling voice behind you.", "\'Here,  Fishy..   Fishy...\'", ["It's bloodied eyes dart across you, searching for ways to finish you off quickly.", "It looks angry, but seems to have survived worse.", "It is smiling, although panting. It seems as though it's malnourishedness is taking effect.", "He seems unfazed, a low growl and a chuckle murmured from within.","It takes a deep breath, the type one might take after a good nights sleep.","It seems to be toying with you, darting through the room."],roomBoss2,62);
+var alpha = new Boss(350, 34, 0, "Alpha", "alpha", 500, 6, [2,3], [5,4,10], -3, alphaxe, sivgoggles, 20, "You hear sudden quick footsteps from behind you.", "you turn to see someone dashing at you, Swinging a large axe!", ["", "", "", "", "", ""],roomBoss3, 120);
+var epicalpha = new Boss(450, 50, 10, "Alpha 949", "alpha", 450, 12, [5, 6], [10, 8, 20], -6, sivgoggles, shurikenbag, -100, "You find yourself in a familiar looking room. Looking around, you realize you have some unfinished business. You hear sudden quick footsteps from behind you.", "you turn to see a familiar figure dashing towards you, Swinging a large axe!", ["", "", "", "", "", ""], roomBoss3, 90);
+var jimgrind = new Boss(200, 35, 35, "Jim Grind", "jimgrind", 200, 2, [1, 44], [12, 11, 12], -2, jimsword, jimarmor, 25, "Someone is in the room with you. You turn just fast enough to see him. He knows he has been spotted.", "A stern look on his face; A deadly look in his eyes.", ["", "You can see small gaps in his defence now, chinks in his armor.", "His breathing is heavy, and his swings are slower, yet just as powerful.", "He stands with a confident air about him, holding his sword firmly.", "His armor is beginning to glow, even the largest chinks in his armor closing as the armor reshapes into its original form.", "He seems unaware of your blows, simply tanking all damage you may deal to him."],roomBoss4, 260);
+var epicjim = new Boss(320, 45, 150, "Jim Grind", "jimgrind", 360, 2, [0, 1], [8, 7, 35], -2, jimarmor, hatandboots, -100, "You find yourself in a familiar looking room. Looking around, you realize you have some unfinished business. Someone is in the room with you. You turn to face him. You both know who won last time. ", "A stern look on his face; A deadly look in his eyes.", ["", "You can see small gaps in his defence now, chinks in his armor.", "His breathing is heavy, and his swings are slower, yet just as powerful.", "He stands with a confident air about him, holding his sword firmly.", "His armor is beginning to glow, even the largest chinks in his armor closing as the armor reshapes into its original form.", "He seems unaware of your blows, simply tanking all damage you may deal to him."], roomBoss4, 190);
+var strangecube = new Boss(250, 1, -5,"Strange Cube", "", 350, 2, [10,100], [100,99,75], -3, inactivecube, device, 30,"A strange cube is sitting on the ground in front or you.","Sudden arcs of electricity jump across its surface as it rises into the air.", ["Although grounded, it still musters up powerful shocks upon you.", "It appears to have physical damage, and is barely able to keep itself aloft.", "It is wavering now, seeming to have less energy within it, focusing on attacks.", "It floats evenly in front of you, electricity visibly through internal circuits.", "electricity is visible streaking across its surface, arcing to nearby surfaces.", "It's magnetic fields are powerful, you can feel them pulling on your magnetic accessories."],bossroom,75)
 var lastsanity = new Boss(500, 18, 16, "Last Remnants of Sanity", "lastsanity", 500, 5, [2,7], [100, 95, 100], -100, trueinsanity, trueinsanity, -100, "You feel parts of your mind fighting back, with nonsense of '<i>Something is wrong</i>.'", "You realize you need to silence these nagging voices.",["<i>You are destroying yourself...</i>","<i>Do you even know the names of the people you killed?</i>","<i></i>","<i>Something is seriously wrong with you,</i>"],bossroom, 60);
 var lastinsanity = new Boss(1000, 15, 10, "Last Remnants of Insanity", "lastinsanity", 1000, 90, [1,64], [1, 2, 3], 100, truesanity, truesanity, -100, "You feel parts of your mind begin to come together.......", "You have come to a realization: the only way to obtain your goal is to wipe insanity from your mind.",["but.. What is this place?","How do you not return to what was already there?","",""],bossroom, 25);
 
@@ -479,7 +468,6 @@ var superminion = new Minion(40, 40, 1, 1, 2, [1, 50], [50, 49, 4], -5, 5, "The 
 var cube = new Minion(1,1,1,1,20,[10,100], [10,11,0], -1, 6, "Cube", "cube", "There is a cube here. It is small.", "A small cube. It hungers for it's friends.", 100, 75);
 var chicken = new Minion(46, 46, 1, 4, 1, [1,100], [100, 99, 10], 6, 4,"Chicken","chicken","There's a chicken here.", "Loot?", 150, 25);
 
-
 for (var i = 0; i < 30; i++){
     getMinion(superminion, miniminion);
 }
@@ -503,18 +491,12 @@ function getMinion(source, minion){
     prints("Gave "+source.name+" "+minion.name);
 }
 
-
-
 var ablerooms = [];
 var finalsanity = 0;
 //based on player level, changes aspects of game such as tiers of items, and rooms.
 function gentables(){
-    
-
     //loot tables
     lootitems = [];
-    //add sanity levels and agility to calculation
-    //&& item.sane >= sanity-2 && item.sane <= sanity+2 ?
     for (i in allitems){
         item = allitems[i];
         if (item.bossitem == 0){ 
@@ -524,10 +506,7 @@ function gentables(){
             if (pla.lvl >= 4) {lootitems.push(item);}
         }
     }
-
     
-    //Math.floor(Math.cbrt(sanity)+-2)
-    //
     ablerooms = [];
     for (i in rooms){
         var localrand = rooms[i];
@@ -541,11 +520,6 @@ function gentables(){
             ablerooms.push(rooms[i]);
             } 
         }
-        /*if (localrand.sanity >= Math.floor(Math.cbrt(sanity)-2) && localrand.sanity <= Math.floor(Math.cbrt(sanity)+2)){
-            //console.log(localrand);
-            ablerooms.push(rooms[i]);
-        } */
-    
     }
     
     if (ablerooms.length == 0 && pla.trueSane == 0){
@@ -584,9 +558,6 @@ function gentables(){
         }
     }
 }
-
-
-
 
 //Room related variables
 var turn = 0;
@@ -636,7 +607,6 @@ function genRoom() {
     for (i in bosses){
         var localrand = bosses[i];
         if (localrand.turn == turn){
-            
             search = false;
             room = localrand.room
         }
@@ -678,10 +648,8 @@ function genRoom() {
     if (search || turn == 1){
          room = ablerooms[rand(ablerooms.length)-1];
     }
-   
     
     roommessage += room.message;
-    
     
     localrand = rand(15);
     if (localrand == 1){roommessage += " Your feet are suddenly covered in water, with more rising from an unseen source."; room.water = 1}
@@ -746,8 +714,6 @@ function genRoom() {
     }
     
     if (search){
-        
-        
         if (pla.lvl >= 3 && search){
             if (enemyspawn == 4 && room.plant == 1 && room.animal == 1){
                 roommessage += prepbattle(dog);
@@ -771,9 +737,6 @@ function genRoom() {
             }
         }
         if (pla.lvl >= 2 && search){
-            //--
-            
-            //--
             if (enemyspawn == 1 && room.manmade == 1 && room.water == 0){
                 roommessage += prepbattle(bookofdeath);
                 search = false;
@@ -791,8 +754,6 @@ function genRoom() {
                 lootable = true
                 search = false;
             }
-            //----
-            
         }
         if (pla.lvl >= 1 && search){
             if (enemyspawn == 1 && room.water == 1 && room.animal == 1){
@@ -969,7 +930,6 @@ function dispitem(item) {
         screen.style.height = "0px";
         screen.style.border = "0px solid black";
         screen.style.padding = "0px";
-
     }
     var quantity = screen.childNodes;
     quantity = quantity[2].childNodes;
@@ -978,7 +938,6 @@ function dispitem(item) {
 function RDrefresh() {
     for (i in allitems){dispitem(allitems[i]);}
     dispminions();
-    //gentables();
     for (i in pla.minions){
         var minion = pla.minions[i];
         screen = document.getElementById(minion.div+minion.id);
@@ -986,7 +945,6 @@ function RDrefresh() {
         var health = 100*(minion.hp/minion.maxhp);
         if (health < 0){health = 0;}
         screen[0].style.width = health + "%";
-        
     }
     
     health = pla.hp;
@@ -997,7 +955,7 @@ function RDrefresh() {
     if (score <0){sanity += score*2}
 
     var screen = document.getElementById("hp");
-    screen.innerHTML = health;
+    screen.innerHTML = pla.hp;
     screen = document.getElementById("dmg");
     screen.innerHTML = pla.atk;
     screen = document.getElementById("dfn");
@@ -1019,8 +977,6 @@ function RDrefresh() {
     health = 100*(pla.hp/pla.maxhp);
     if (health < 0){health = 0;}
     screen.style.width = health + "%";
-    
-    
     
     var misc;
     var item = equippeditems[0];
@@ -1097,7 +1053,6 @@ function equip(item) {
         var childs = screen.childNodes;
         childs[1].innerHTML = "<img src = 'img/" + item.div + ".png'>";
         
-        
         RDrefresh();
     } else {console.log("Cannot equip. Not enough items.")}
 }
@@ -1151,12 +1106,10 @@ function op(thing) {
                 for (var i = 0; i < 3; i++){
                     getMinion(pla.minions[i], miniminion);
                 }
-                
             }
             break;
     }
 }
-
 
 //roommessage += prepbattle
 //battleprep 0 is starting fight, battleprep -1 is not attempting to enter fight.
@@ -1171,11 +1124,9 @@ var plaHeal = 0;
 var plaTotal = 0;
 
 function prepbattle(enemy){
-    
     enm = enemy;
     console.log(enm.name);
     if (enm.name == zarol.name || enm.name == lastinsanity.name){
-        
         screen = document.getElementById("RDfight");
         screen.style.backgroundImage = "url('img/screen"+enm.div+".png')";
         screen.style.color = "#eef";
@@ -1189,8 +1140,8 @@ function prepbattle(enemy){
     }
     
     if (enm.name == zarol.name){
-        zarol = buildZarol()
-        enm = zarol
+        zarol = buildZarol();
+        enm = zarol;
     }
     battleprep = 500;
     printc(1, "");
@@ -1224,7 +1175,6 @@ function enmFight(){
         var deviation;
         if (enm.atkInt == 0){
             enm.atkInt = enm.atkIntBase;
-            
             if (enm.boss){hpratio = enm.hp/enm.hptop}
             else {var hpratio = 100*(enm.hp/enm.maxhp);}
             
@@ -1305,7 +1255,6 @@ function enmFight(){
         if (enm.name == "Adventurer" || enm.name == "Yourself"){
             plaTime += 1;
         }
-
     }
     if (dodging && monolithTime >= 0) {
         monolithTime -= 1;
@@ -1327,7 +1276,7 @@ function enmFight(){
         }
     }
 }
-var checkpoint = 0
+var checkpoint = 0;
 function plaFight(watdo){
     RDrefresh();
     switch (watdo){
@@ -1368,28 +1317,24 @@ function attack(source, target){
             attacking = false;
         }
     } if (attacking) {
-        Damage(source, target);
+        var message;
+        var newagil = [((target.agil[0]*source.agil[1])-((source.agil[0]*target.agil[1])/2)), (target.agil[1]*source.agil[1])];
+        console.log(newagil)
+        if (rand(newagil[1]) <= newagil[0]){
+            message = target.name + " dodged "+ source.name +"'s attack";
+        } else {
+            var deviation = rand(source.ddev * 2)- source.ddev;
+            var dmg = (source.atk+deviation)-(target.def);
+            if (dmg <= 0){
+                dmg = 1;
+            }
+            message = source.name+" deals <strong>"+dmg+"</strong> damage to "+ target.name;
+            target.hp = target.hp-dmg;
+        }
+        printc(target, message);
         check(target);
         attacking = false;
     }
-}
-function Damage(source, target){
-    var message;
-    var newagil = [((target.agil[0]*source.agil[1])-((source.agil[0]*target.agil[1])/2)), (target.agil[1]*source.agil[1])];
-    console.log(newagil)
-    if (rand(newagil[1]) <= newagil[0]){
-        message = target.name + " dodged "+ source.name +"'s attack";
-    } else {
-        var deviation = rand(source.ddev * 2)- source.ddev;
-        var dmg = (source.atk+deviation)-(target.def);
-        if (dmg <= 0){
-            dmg = 1;
-        }
-        message = source.name+" deals <strong>"+dmg+"</strong> damage to "+ target.name;
-        target.hp = target.hp-dmg;
-    }
-    printc(target, message);
-    //prints(message);
 }
 var minionTree = [];
 function getMinionTree(entity, type){
@@ -1436,9 +1381,7 @@ function check(entity){
             pla.sane += entity.sane; 
             if (entity.boss == 1){
                 if (entity.name == "Zarol"){
-                    
                     limbo(1, "At the moment of your victory, a swirling vortex of malevolence forms. You attempt in vain to escape it, but you are not yet strong enough. You find yourself in a familiar place...");
-                    
                 }
                
                 if (entity.name !== "True Insanity" || entity.name !== "True Sanity" || entity.name !== "Zarol" || entity.name !== "epicalpha" || entity.name !== "epiccoo" || entity.name !== "epicjim"){
@@ -1462,7 +1405,6 @@ function check(entity){
                     var miscB;
                     if (equippeditems[0] == nothing){miscA = herosword} else {miscA = equippeditems[0]}
                     if (equippeditems[1] == nothing){miscB = heroshield} else {miscB = equippeditems[1]}
-                    //function Boss(    hp,         atk,        de,      name,      divname,    maxhp,      ddev, atkgil, heal, sane, loot, loot2, turn, message, cry, rundown, room, interval){
                     bosses[0] = new Boss(pla.maxhp, pla.atk, pla.def, "Yourself", "adventurer", pla.maxhp, pla.ddev, pla.agil, [plaTotal, plaTotal-plaHeal+1, 4], sanity, miscA, miscB, 10, "You hear the footsteps of someone else.", "It is an Adventurer, \nReadying his stance for Battle!", ["He seems oddly unaware of the massive ammounts of damage you have delt him.\nMuch like you were.", "", "", "", "He seems more confident of himself,\nmore sure of his strides.",""], bossroom, (Math.floor(plaTime/plaTotal)));
                     bosses[0].minions = pla.minions;
                 }
@@ -1503,8 +1445,6 @@ function check(entity){
     }
 }
 
-
-
 function heal(entity){
     if (entity == pla && pla.hp > 0){
         if (inbattle){
@@ -1530,7 +1470,6 @@ function heal(entity){
     }
 }
 
-
 var dodging = false;
 var dodged = 0;
 var monolithTime = 1500;
@@ -1544,7 +1483,7 @@ function limbo(type, message){
             score -= 1;
             pla.sane -= 5;
             if (checkpoint < 0){
-                checkpoint = 1
+                checkpoint = 1;
             }
             
             turn = checkpoint;
@@ -1554,23 +1493,18 @@ function limbo(type, message){
             screen.innerHTML = message;
             
             if (sanity < 0){
-                //if (rand(100) <= sanity*-1){
-                    //monolith spawn.
-                    console.log("Monolith spawn");
-                    dodging = true;
-                    dodged = 0;
-                    monolithTime = 1500 + (sanity * 1.5);
-                    if (monolithTime <= 1){monolithTime = 5}
-                    monolithOrig = monolithTime;
-                    var screen = document.getElementById("RDmono");
-                    screen.style.backgroundImage = "url('img/monoAnimation/mono1.png')";
-                    screenchange(5);
-                //}
-                
+                console.log("Monolith spawn");
+                dodging = true;
+                dodged = 0;
+                monolithTime = 1500 + (sanity * 1.5);
+                if (monolithTime <= 1){monolithTime = 5}
+                monolithOrig = monolithTime;
+                var screen = document.getElementById("RDmono");
+                screen.style.backgroundImage = "url('img/monoAnimation/mono1.png')";
+                screenchange(5);
             } else {
                 screenchange(4);
             }
-            
             break;
         //anything zarol
         case 1:
@@ -1622,15 +1556,12 @@ function limbo(type, message){
                 currentFram = 1;
             }
             break;
-
     }
 }
 
 currentFram = 1;
 function monoAnimation(percentage, frams){
-
     if (percentage == (100/frams) * currentFram){
-        
         var screen = document.getElementById("RDmono");
         screen.style.backgroundImage = "url('img/monoAnimation/mono" + currentFram + ".png')";
         currentFram += 1;
