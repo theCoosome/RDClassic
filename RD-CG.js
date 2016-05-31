@@ -4,133 +4,12 @@ http://steampoweredairship.com/unexpected-error/rd/
 https://drive.google.com/open?id=1HYPd5PBuNX24mbP4z_BhIiDxqP5lRM1dOc4g5BSVc8I
 https://drive.google.com/open?id=1S_5sqfRwNeyYip_296_XltTGRayP3fW6amOfEyVC5hM
 ___CHANGELOG___
+
 --2.0-the Classic update--
     -Removed some things
     +added some rooms
     *streamlined code
     *fixed some bugs
-
---1.3-fattening update--
-    +does not actually fatten you
-    +added agility canceling
-            newagil = [((source.agil[0]*target.agil[1])-((target.agil[0]*source.agil[1])/2)), (source.agil[1]*target.agil[1])];
-    +incrased base agil
-    +added room 31
-    +added 3 new items
-    +added 1 minion
-    +changing sanity is more viable
-        +items affect sanity each room (item.sane/5)
-        +healing repairs sanity (+.2)
-        -killing enemies reduces sanity (-1)
-    *fixed minions being too common
-    *fixed adventurer recreation (didnt have div stat)
-    *nerfed the coosome
-
-
---------------The late game update-----------------
-    + zarol gets buffed based on player lvl
-    +buffed base agility
-    +limbo less penalizing
-    *buffed the coosome
-
-------------1.1 ----------------
-    + bug fixes
-    + balanced epics
-    + minions now obtainable
-    + added potato and otatop
-    + added rooms 29 - 30
-
---0.1.9+1--the Beefy update--
-    -didn't add beef
-    +started to name updates
-    +added minion related functions: killMinion, getMinionTree
-    +added rooms 25-28
-    + mimics now drop items
-    +adjusted monolith time to fit the new sanity spawns
-    *prettied up minion displaying
-    *fixed spelling
-    Balances
-        *nerfed the coosome, again
-        *buffed axeurlegs
-
---0.1.9-- the bug fix update-
-    -Monoliths now unequip items
-        -Code used unequip function with square brackets instead of parenthesis
-    -All items equipable
-        -Items had differing divnames and variable names
-    -fixed ablerooms
-        -used sqrt still, converted to cbrt
-
---0.1.8-the Bug Filled update-
-    -Bugs  ------DO NOT ADD MORE ANYTHING TO ANYTHING UNTIL ALL BUGS ARE FIXED
-        -Monoliths don't unequip items
-        -Double loot from bosses (Latency of one room?)
-        -some items not equipable
-        -only gives maximum insanity room from sanity ~-30 and beyond
-        -the thing with the minion healing?
-    +minions
-
---0.1.7--
-    -Separated fighting aspects (attacking, healing) in preparation for Companions
-    -Standardised all fighting classes to the following attribute names: (name hp maxhp atk def ddev agil sane)
-    -much balancing
-    -fixed fighting final sanities repetitively
-
---------0.1.6---
-
-    +Sanity
-    -modified item tables
-    -items now sorted by lvl
-    +monoliths
-    +more item graphics
-    -Items that need graphics:
-        *white chestplate
-        *all of the orbs
-        *Chicken
-        *redball
-        *True sanity
-        *true insanity
-        *Enchanted armor
-        *alpha axe
-        *alpha glasses
-        *pencil
-        *fishing rod
-        *hat and boots
-        *broken seashell
-        
--another colton update-2.0-sanity update--
-+added limbo
-+fixed some spelling probably
-+manipulated things into references
-+might be some other stuff idk
-Bug- dying in room after boss causes fighting dead boss, get loot again
-
---------0.1.4---
-    + added agil modifiers
-    + added a few new items
-    + added secret boss
-    + buffed all the enemies
-    + nerfed the coosome
-    + some new enemies
-
---------0.1.3---
-    - balanced bosses
-    + added some new items
-
----the colton update--
-+fixed stuff
-+fixed things
-+probably fixed some spelling
-+changed up the inventory order
--bugs maybe? I dunno
-
---------0.1.1---
-    - Fixed item damage not being added to base stats
-    
---------0.1.0--- 
-    - Fixed grammar problems with new rooms
-    - Fixed enemies not spawning
-    - Added changelog
 */
 //creates random number between 1 and num.
 function rand(num){
@@ -177,8 +56,7 @@ function Room(plant, manmade, water, dark, animal, light, items, north, east, so
     this.exitA = exitA;
     this.exitB = exitB;
     this.exitFail = exitFail;
-    this.sanity = sane;
-    
+    this.sanity = sane;   
 }
 
 //room = new Room();
@@ -228,7 +106,6 @@ var rooms = [room1, room2, room3, room4, room5, room6, room7, room8, room9, room
 
 //heal: [end, switch, heal]
 function Enemy(atk, de, name, pic, maxhp, ddev, agil, sane, message, cry, lvl, rundown, heal, interval){
-    
         this.hp = 0;
         this.atk = parseInt(atk);
         this.def = parseInt(de);
@@ -283,13 +160,11 @@ function item(offence, defence, agility, sanity, score, name, divname, desc){
         this.bossitem = 0;
         
 }
-//If an item has a score of over 5, it is considered a reference, and Coosome shall act swiftly to Counter-reference toward the same topic.
-
-// lvl 1 items ----
 var nothing = new item(0, 0, 0, 0, 0, "", "no_thing", "");
 var acorncap = new item(0, 1, 1, 2, 9, "Acorn Cap", "acorncap", "If you were really tiny, like, smaller than a squirrel, this would be the perfect armor.\nYou place it over your heart \nYou call it a kiss");
 var boardgame = new item(0, 2, -1, 2, 2, "Board Game", "boardgame", "The cardboard is battered \nfrom years of wear, but you can see the winding \npath your piece would take if you were a winner. \n\nYou're not a winner.");
 var bobbypin = new item(1, 0, 1, 1, 1, "Bobby Pin", "bobbypin", "Ow..., it's sharp.");
+var safetypin = new item(4, 0, 3, 1, 1, "Safety pin", "safetypin", "Not actually very safe at all.<br/>Actually quite dangerous.");
 var woodstick = new item(1, 0, 1, 3, 2, "Wooden Stick", "woodstick", "It might not be the best sword, but hey, it's worth a try.");
 var brokenglasses = new item(0, 1, 3, -1, 2, "Broken Glasses", "brokenglasses", "The few shards of perfectly clear glass in these frames could have only been made by magic.");
 var fakesword = new item(1, 1, 0, 2, 1, "Fake Sword", "fakesword", "This is actually just an inflatable party favor");
@@ -308,7 +183,7 @@ var organs = new item(1, 1, 3, -5, 5, "Organs", "organs", "A wet gooey mass that
 var rotflesh = new item(3,2, 0, -7, 4,"Rotting Flesh","rotflesh","It's a rotting leg, snatched off a carcass that was probably dead. \n Probably.");
 var crate = new item(-1, 3, -3, 2, 3, "Crate", "crate","It cowers, trying to get away from you. \nYou can hear it whimper. \nIt knows what's coming.");
 var redbook = new item(1, 2, 0, 2, 6, "Red Book", "redbook", "There are no markings, but you feel as though there are many others much like it.");
-var onepin = new item(4, 0, 1, 1, 2, "One Pin", "onepin", "The tip is dull from overuse.");
+var onepin = new item(5, 0, 1, 1, 2, "One Pin", "onepin", "The tip is dull from overuse.");
 var nerfgun = new item(2, 0, 1, 1, 3, "Nerf Gun", "nerfgun", "Sometimes Styrofoam bullets can hurt.");
 var brokenseashell = new item(-1, 2, 4, 5, 7, "Broken seashell", "brokenseashell", "It appears recently broken, but you keep it for sentimental value. Towards what, even you cannot quite tell.");
 var redball = new item(-1, 2, 1,10, 6, "Red Ball", "redball", "It is comforting, yet oddly unnerving. You keep it as an anchor to remind you of the 'real world.'");
@@ -325,8 +200,6 @@ var buttton = new item(0, 1, -3, 3, 9, "Button", "buttton", "Even though it is j
 var map = new item(0, 1, 3, 1, 8, "Map", "map", "A roughly drawn map, you don't recognize any of the landmarks. You deem it useless.");
 var cable = new item(2, 0, 1, 5, 3, "a Cable", "cable", "You are sure it charges something.<br/>Somewhere.");
 var croptop = new item(0, 3, 2, 2, 3, "Crop Top", "croptop", "It is woven from corn stalks. You are amazed by the makers commitment as you laugh yourself to tears.");
-
-//lvl 2 items ----
 var heavenchip = new item(4, 4, 4, 4, 4, "Heaven Chip", "heavenchip", "Tastes like heaven");
 var planc = new item(8, 1, 4, -8, 7, "Plan C", "planc", "It's your backup plan.");
 var shinedisk = new item(6,6, 4, 8, 4, "Shine Disk", "shinedisk", "It's a disk of pure light. You can see your reflection in it.");
@@ -338,14 +211,10 @@ var ashjar = new item(1, 10, -2, -3, 5, "Jar of Ash", "ashjar", "A small jar of 
 var tornclaw = new item(8, 4, 7, -12, 5, "Torn Claw", "tornclaw", "A claw that must have been brutaly ripped off the creature while it was still alive. ");
 var antmound = new item(5,3, -2, -4, 6, "Ant Mound", "antmound", "It's strangely slush like.");
 var planck = new item(0, 2, 11, 2, 5, "Plan ck", "planck", "like plan c, but more, and smaller. Like 1.616199x10<sup>-35</sup> meters small.");
-
-//lvl 3 items ----
 var ichor = new item(7, 7, -4, -8, 5, "Ichor", "ichor", "Blood of the gods. How did you even get this?");
 var err = new item(0, 0, 0, 0, 4, "Error", "err", "It was quite unexpected.");
 var bloodpill= new item(7,5,4,-5,8,"Blood Pill","bloodpill","A small capsule that contains a small amount of blood. Using it has strange effects on the environment. Blood is everywhere.");
 var darkcrystal = new item(13, 2, -2, -13, 4, "Darkened Crystal", "darkcrystal", "Contained in a forcefield, this crystal fires lasers at anything nearby.");
-
-//boss items ----
 var lapis = new item(1000, 1000, 1000, 0, 1000, "coo33's Lapis", "lapis", "The Jem of the Gods.\n\nOr at least the god of 7.");
 var hatandboots = new item(5, 50, 8, 0, 10, "Hat and Boots", "hatandboots", "Can't Bump your head anymore, and probably won't stub your toes.");
 var zaroltrophy = new item(0, 0, 0, 20, 50, "Zarol Trophy", "zaroltrophy", "Thinking back, Seriously.\nHow the hell did you do that?");
@@ -372,7 +241,6 @@ var lootitems = [];
 var equippeditems = [nothing, nothing];
 
 function Boss(hp, atk, de, name, divname, maxhp, ddev, agil, heal, sane, loot, loot2, turn, message, cry, rundown, room, interval){
-    
         this.hp = hp;
         this.rehp = hp;
         this.atk = parseInt(atk);
@@ -416,8 +284,9 @@ var epicjim = new Boss(320, 45, 150, "Jim Grind", "jimgrind", 360, 2, [0, 1], [8
 var strangecube = new Boss(250, 1, -5,"Strange Cube", "", 350, 2, [10,100], [100,99,75], -3, inactivecube, device, 30,"A strange cube is sitting on the ground in front or you.","Sudden arcs of electricity jump across its surface as it rises into the air.", ["Although grounded, it still musters up powerful shocks upon you.", "It appears to have physical damage, and is barely able to keep itself aloft.", "It is wavering now, seeming to have less energy within it, focusing on attacks.", "It floats evenly in front of you, electricity visibly through internal circuits.", "electricity is visible streaking across its surface, arcing to nearby surfaces.", "It's magnetic fields are powerful, you can feel them pulling on your magnetic accessories."],bossroom,75)
 var lastsanity = new Boss(500, 18, 16, "Last Remnants of Sanity", "lastsanity", 500, 5, [2,7], [100, 95, 100], -100, trueinsanity, trueinsanity, -100, "You feel parts of your mind fighting back, with nonsense of '<i>Something is wrong</i>.'", "You realize you need to silence these nagging voices.",["<i>You are destroying yourself...</i>","<i>Do you even know the names of the people you killed?</i>","<i></i>","<i>Something is seriously wrong with you,</i>"],bossroom, 60);
 var lastinsanity = new Boss(1000, 15, 10, "Last Remnants of Insanity", "lastinsanity", 1000, 90, [1,64], [1, 2, 3], 100, truesanity, truesanity, -100, "You feel parts of your mind begin to come together.......", "You have come to a realization: the only way to obtain your goal is to wipe insanity from your mind.",["but.. What is this place?","How do you not return to what was already there?","",""],bossroom, 25);
+var creepiestbaldest = new Boss(400, 40, 5, "The Knowing Eye", "creepiestbaldest", 500, 1, [5, 6], [5, 4, 20], -20, map, shinedisk, 52, "You see one blink. And with its eyes, another one is opening.", "You feel its knowing gaze, that it has nothing more to learn.", ["", "", "", "", "", ""], room34, 110);
 
-var bosses = [adventurer, coosome, zarol, alpha, strangecube, jimgrind, epicalpha, epicjim, epiccoo, lastsanity, lastinsanity];
+var bosses = [adventurer, coosome, zarol, alpha, strangecube, jimgrind, epicalpha, epicjim, epiccoo, lastsanity, lastinsanity, creepiestbaldest];
 
 function Minion(hp, maxhp, atk, ddev, de, agil, heal, sane, lvl, name, pic, message, desc, interval, distract){
         this.hp = hp;
@@ -826,6 +695,7 @@ function screenchange(number) {
     screen3 = document.getElementById("RDfight");
     screen4 = document.getElementById("RDlimbo");
     screen5 = document.getElementById("RDmono");
+    screen6 = document.getElementById("RDgrave");
     screen1.style.height = "0";
     screen1.style.padding = "0";
     screen2.style.height = "0";
@@ -836,6 +706,8 @@ function screenchange(number) {
     screen4.style.padding = "0";
     screen5.style.height = "0";
     screen5.style.padding = "0";
+    screen6.style.height = "0";
+    screen6.style.padding = "0";
     if (number === 1) {
         screen1.style.height = "239px";
         screen1.style.padding = "10px";
@@ -855,6 +727,10 @@ function screenchange(number) {
     if (number === 5) {
         screen5.style.height = "239px";
         screen5.style.padding = "10px";
+    }
+    if (number === 6) {
+        screen6.style.height = "239px";
+        screen6.style.padding = "10px";
     }
     console.log("changed to screen "+number);
 }
@@ -1275,6 +1151,12 @@ function enmFight(){
             screenchange(1);
         }
     }
+    if (gravetime > 0){
+        gravetime -= 1;
+        if (gravetime == 0){
+            limbob(limbostuff[0], limbostuff[1]);
+        }
+    }
 }
 var checkpoint = 0;
 function plaFight(watdo){
@@ -1409,20 +1291,10 @@ function check(entity){
                     bosses[0].minions = pla.minions;
                 }
                 if (entity.name == "Last Remnants of Sanity") {
-                    pla.trueSane = -1;
-                    pla.baseatk = 16;
-                    pla.ddev = 20;
-                    pla.maxhp = 110;
-                    pla.baseagil = [2, 25];
-                    pla.basedef = -5;
+                    Become(-1);
                 }
                 if (entity.name == "Last Remnants of Insanity") {
-                    pla.trueSane = 1;
-                    pla.maxhp = 110;
-                    pla.basedef = 5;
-                    pla.healval = 2;
-                    pla.ddev = 5;
-                    pla.baseagil = [1, 18];
+                    Become(1);
                 }
             }
             screenchange(1);
@@ -1474,8 +1346,20 @@ var dodging = false;
 var dodged = 0;
 var monolithTime = 1500;
 var monolithOrig = monolithTime;
+var limbostuff = [0, ""];
+var gravetime = 0;
 
 function limbo(type, message){
+    var thing = document.getElementById("grave2");
+    suffix = [["You where brutaly evicerated by ", "."], ["You where slain by ", ". It mocks your death"],["You where killed by ",". The gods did not favor you today."], ["Your futile exsistance was ended by ", "."],["You where kneecaped by ", ". The cats will miss you."], ["You are dead. ","mocks your death and thinks 'hey, that was easy'."], ["Sometimes, the gods say no. ", " was favored by the gods."], ["Your entrails where removed by ", "."], ["Your face was torn off by ", "."], ["You didn't click fast enough. ", " was faster"], ["You have lost. ", " aplauds your failure."]];
+    prefix = suffix[rand(suffix.length-1)];
+    thing.innerHTML = prefix[0] + enm.name + prefix[1];
+    gravetime = 500;
+    screenchange(6);
+    limbostuff = [type, message];
+}
+
+function limbob(type, message){
     roommessage = "";
     switch (type) {
         //normal death
@@ -1547,7 +1431,7 @@ function limbo(type, message){
             buton = document.getElementById("dodgeButton");
             buton.innerHTML = runmessages[rand(runmessages.length-1)];
             if (dodged == 5){
-                dodging = false
+                dodging = false;
                 dodged = 0;
                 monolithTime = 1500;
                 turn = checkpoint;
@@ -1566,5 +1450,41 @@ function monoAnimation(percentage, frams){
         screen.style.backgroundImage = "url('img/monoAnimation/mono" + currentFram + ".png')";
         currentFram += 1;
         prints(screen);
+    }
+}
+
+function Become(type){
+    if (type == 1){
+        pla.baseatk = 12;
+        pla.basedef = 8;
+        pla.ddev = 5;
+        pla.healval = 2;
+        pla.maxhp = 120;  
+        pla.hdev = 3;
+        pla.baseagil = [35, 100];
+        pla.sane = 50;
+        pla.trueSane = 1;
+    }
+    if (type == 0){
+        pla.baseatk = 8;
+        pla.basedef = 0;
+        pla.ddev = 10;
+        pla.healval = 1;
+        pla.maxhp = 100;  
+        pla.hdev = 3;
+        pla.baseagil = [18, 100];
+        pla.sane = 8;
+        pla.trueSane = 0;
+    }
+    if (type == -1){
+        pla.baseatk = 18;
+        pla.basedef = -5;
+        pla.ddev = 20;
+        pla.healval = 1;
+        pla.maxhp = 110;  
+        pla.hdev = 3;
+        pla.baseagil = [28, 100];
+        pla.sane = -50;
+        pla.trueSane = -1;
     }
 }
