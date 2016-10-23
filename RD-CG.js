@@ -139,12 +139,13 @@ var catwatcher = new Enemy(15, 5, "Watcher Catling", "catwatcher", 65, 2, [20,10
 var axeurlegs = new Enemy(2, 10, "Axeurlegs", "axeurlegs", 10, 1, [0,1], -2, "One of the plants seems to be twitching.....", "Steel blades click into place as the plant spins into action!", 1, ["", "","", ""],[1,3,1],8)
 var anenemy = new Enemy(5, 7, "Anenemy", "anenemy", 38, 10, [10,100], 0, "A sloshing sound alerts you to anenemy in the water......", "Anenemy attacks you!", 1, ["","", "", ""], [10, 8, 8], 75)
 var lightorb = new Enemy(12, 20, "Light Orb", "lightorb", 5, 3, [4,5], 0, "A glowing orb floats gently towards you", "", 2, ["It's light is so dim, you can almost make out the creature emitting it.", "it is no longer floating quite as high as before, and it's light is fading.", "It's light is getting duller, and it sways from side to side.", "It darts around in front of you, a streak of light across your vision."], [1,2,3], 100)
-var mimic = new Enemy(5, 15, "Mimic", "mimic", 20, 5, [1,100], -1, "A golden chest sits with elegant details and pure beauty.", "The chest snaps open, revealing not loot, \nBut a row of Teeth!", 2, ["","", "", ""], [1,2,3], 75)
-var nerveball = new Enemy(20, 8, "the ball of nerves", "nerveball", 20, 8, [10,100], -3, "You see a swirling ball of... nerves?", "it turns towards you, screaming with silence\n \n...and electrical currents.", 3, ["", "", "", ""], [1,2,3], 50)
-var clone = new Enemy(15, 10, "Your clone", "clone", 100, 5, [1,20], -5, "You see a more menacing version of yourself in what you think is a mirror....", "", 2, ["", "", "", ""], [10, 9, 10], 75)
-var koi = new Enemy(20, -2, "Koi", "koi", 250, 3, [1,100], 0,"There is a very strange looking fish swimming in the water....","It leaps at you, with it's blunt teeth!",3,["", "", "", ""],[10,9,50], 75)
-var slime = new Enemy(3, 15, "Slime", "slime", 150, 2, [1,100], -3, "The ceiling seems to be dripping some strange substance...","You are consumed by a large blob of jelly!",3,["", "", "", ""],[40,39,2], 26)
-var dog = new Enemy(10,10,"Dog", "dog", 175, 20, [1,25], 0, "The sounds of a happy dog are getting louder....", "ARF ARF!",3,["","","",""],[99,100,0], 75)
+var mimic = new Enemy(5, 15, "Mimic", "mimic", 20, 5, [1,100], -1, "A golden chest sits with elegant details and pure beauty.", "The chest snaps open, revealing not loot, \nBut a row of Teeth!", 2, ["","", "", ""], [1,2,3], 75);
+var nerveball = new Enemy(20, 8, "the ball of nerves", "nerveball", 20, 8, [10,100], -3, "You see a swirling ball of... nerves?", "it turns towards you, screaming with silence\n \n...and electrical currents.", 3, ["", "", "", ""], [1,2,3], 50);
+var clone = new Enemy(15, 10, "Your clone", "clone", 100, 5, [1,20], -5, "You see a more menacing version of yourself in what you think is a mirror....", "", 2, ["", "", "", ""], [10, 9, 10], 75);
+var koi = new Enemy(20, -2, "Koi", "koi", 250, 3, [1,100], 0,"There is a very strange looking fish swimming in the water....","It leaps at you, with it's blunt teeth!",3,["", "", "", ""],[10,9,50], 75);
+var slime = new Enemy(3, 15, "Slime", "slime", 150, 2, [1,100], -3, "The ceiling seems to be dripping some strange substance...","You are consumed by a large blob of jelly!",3,["", "", "", ""],[40,39,2], 26);
+var dog = new Enemy(10,10,"Dog", "dog", 175, 20, [1,25], 0, "The sounds of a happy dog are getting louder....", "ARF ARF!",3,["","","",""],[99,100,0], 75);
+var notscaryghost = new Enemy(4, 3, "Not-scary ghost", "notscaryghost", 5000, 2, [1, 28], -2, "You feel something bump into you.", "You are mildly surprised to see a ghost in the room.", 4, [], [10, 7, 30], 110);
 
 //Items. All of the items.
 function item(offence, defence, agility, sanity, score, name, divname, desc){
@@ -158,7 +159,6 @@ function item(offence, defence, agility, sanity, score, name, divname, desc){
         this.desc = desc;
         this.quant = 0;
         this.bossitem = 0;
-        
 }
 var nothing = new item(0, 0, 0, 0, 0, "", "no_thing", "");
 var acorncap = new item(0, 1, 1, 2, 9, "Acorn Cap", "acorncap", "If you were really tiny, like, smaller than a squirrel, this would be the perfect armor.\nYou place it over your heart \nYou call it a kiss");
@@ -284,7 +284,7 @@ var epicjim = new Boss(320, 45, 150, "Jim Grind", "jimgrind", 360, 2, [0, 1], [8
 var strangecube = new Boss(250, 1, -5,"Strange Cube", "", 350, 2, [10,100], [100,99,75], -3, inactivecube, device, 30,"A strange cube is sitting on the ground in front or you.","Sudden arcs of electricity jump across its surface as it rises into the air.", ["Although grounded, it still musters up powerful shocks upon you.", "It appears to have physical damage, and is barely able to keep itself aloft.", "It is wavering now, seeming to have less energy within it, focusing on attacks.", "It floats evenly in front of you, electricity visibly through internal circuits.", "electricity is visible streaking across its surface, arcing to nearby surfaces.", "It's magnetic fields are powerful, you can feel them pulling on your magnetic accessories."],bossroom,75)
 var lastsanity = new Boss(500, 18, 16, "Last Remnants of Sanity", "lastsanity", 500, 5, [2,7], [100, 95, 100], -100, trueinsanity, trueinsanity, -100, "You feel parts of your mind fighting back, with nonsense of '<i>Something is wrong</i>.'", "You realize you need to silence these nagging voices.",["<i>You are destroying yourself...</i>","<i>Do you even know the names of the people you killed?</i>","<i></i>","<i>Something is seriously wrong with you,</i>"],bossroom, 60);
 var lastinsanity = new Boss(700, 15, 10, "Last Remnants of Insanity", "lastinsanity", 1000, 90, [1,64], [1, 2, 3], 100, truesanity, truesanity, -100, "You feel parts of your mind begin to come together.......", "You have come to a realization: the only way to obtain your goal is to wipe insanity from your mind.",["but.. What is this place?","How do you not return to what was already there?","",""],bossroom, 25);
-var creepiestbaldest = new Boss(400, 40, 5, "The Knowing Eye", "creepiestbaldest", 500, 1, [5, 6], [5, 4, 20], -20, map, shinedisk, 52, "You see one blink. And with its eyes, another one is opening.", "You feel its knowing gaze, that it has nothing more to learn.", ["", "", "", "", "", ""], room34, 110);
+var creepiestbaldest = new Boss(400, 40, 5, "The Knowing Eye", "creepiestbaldest", 500, 1, [5, 6], [5, 4, 20], -20, map, shinedisk, 52, "You see one blink. And with its eyes, another one is opening.", "You feel its knowing gaze, that it has nothing more to learn.", ["It blinks.", "It stares.", "It blinks.", "It stares.", "It blinks.", "It stares."], room34, 110);
 
 var bosses = [adventurer, coosome, zarol, alpha, strangecube, jimgrind, epicalpha, epicjim, epiccoo, lastsanity, lastinsanity, creepiestbaldest];
 
@@ -583,6 +583,12 @@ function genRoom() {
     }
     
     if (search){
+        if (pla.lvl >= 4 && search){
+            if (enemyspawn == 4 && room.dark == 0){
+                roommessage += prepbattle(notscaryghost);
+                search = false;
+            }
+        }
         if (pla.lvl >= 3 && search){
             if (enemyspawn == 4 && room.plant == 1 && room.animal == 1){
                 roommessage += prepbattle(dog);
