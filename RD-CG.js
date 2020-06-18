@@ -1272,7 +1272,7 @@ function check(entity){
                     limbo(1, "At the moment of your victory, a swirling vortex of malevolence forms. You attempt in vain to escape it, but you are not yet strong enough. You find yourself in a familiar place...");
                 }
                
-                if (entity.name !== "True Insanity" || entity.name !== "True Sanity" || entity.name !== "Zarol" || entity.name !== "epicalpha" || entity.name !== "epiccoo" || entity.name !== "epicjim"){
+                if (!(entity.name == "True Insanity" || entity.name == "True Sanity" || entity.name == "Zarol" || entity.name == "epicalpha" || entity.name == "epiccoo" || entity.name == "epicjim")){
                     checkpoint = entity.turn;
                 }
                     
